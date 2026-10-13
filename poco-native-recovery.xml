@@ -2,63 +2,70 @@
 <manifest>
   <remote name="poco-native-recovery" fetch="https://github.com/PocoF3Releases" revision="refs/heads/cnb" />
   <remove-project path="bootable/recovery" optional="true" />
-  <project name="android_bootable_recovery" path="bootable/recovery" remote="poco-native-recovery" />
+  <project name="android_bootable_recovery" path="bootable/recovery" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="build/make" optional="true" />
-  <project name="android_build" path="build/make" remote="poco-native-recovery" />
+  <project name="android_build" path="build/make" remote="poco-native-recovery" groups="pdk,sysui-studio">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
   <remove-project path="device/qcom/sepolicy_vndr/legacy-um" optional="true" />
-  <project name="android_device_qcom_sepolicy_vndr_legacy-um" path="device/qcom/sepolicy_vndr/legacy-um" remote="poco-native-recovery" />
+  <project name="android_device_qcom_sepolicy_vndr_legacy-um" path="device/qcom/sepolicy_vndr/legacy-um" remote="poco-native-recovery" groups="lahaina,qcom" />
   <remove-project path="external/boringssl" optional="true" />
-  <project name="android_external_boringssl" path="external/boringssl" remote="poco-native-recovery" />
+  <project name="android_external_boringssl" path="external/boringssl" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/bzip2" optional="true" />
-  <project name="android_external_bzip2" path="external/bzip2" remote="poco-native-recovery" />
+  <project name="android_external_bzip2" path="external/bzip2" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/ntfs-3g" optional="true" />
   <project name="android_external_ntfs-3g" path="external/ntfs-3g" remote="poco-native-recovery" />
   <remove-project path="external/rust/android-crates-io" optional="true" />
-  <project name="android_external_rust_android-crates-io" path="external/rust/android-crates-io" remote="poco-native-recovery" />
+  <project name="android_external_rust_android-crates-io" path="external/rust/android-crates-io" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/rust/cxx" optional="true" />
-  <project name="android_external_rust_cxx" path="external/rust/cxx" remote="poco-native-recovery" />
+  <project name="android_external_rust_cxx" path="external/rust/cxx" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/selinux" optional="true" />
-  <project name="android_external_selinux" path="external/selinux" remote="poco-native-recovery" />
+  <project name="android_external_selinux" path="external/selinux" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/sqlite" optional="true" />
-  <project name="android_external_sqlite" path="external/sqlite" remote="poco-native-recovery" />
+  <project name="android_external_sqlite" path="external/sqlite" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="frameworks/base" optional="true" />
-  <project name="frameworks_base" path="frameworks/base" remote="poco-native-recovery" />
+  <project name="frameworks_base" path="frameworks/base" remote="poco-native-recovery" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
   <remove-project path="hardware/interfaces" optional="true" />
-  <project name="android_hardware_interfaces" path="hardware/interfaces" remote="poco-native-recovery" />
+  <project name="android_hardware_interfaces" path="hardware/interfaces" remote="poco-native-recovery" groups="pdk,sysui-studio" />
   <remove-project path="hardware/libhardware_legacy" optional="true" />
-  <project name="android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" remote="poco-native-recovery" />
+  <project name="android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/apex" optional="true" />
-  <project name="android_system_apex" path="system/apex" remote="poco-native-recovery" />
+  <project name="android_system_apex" path="system/apex" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/extras" optional="true" />
-  <project name="android_system_extras" path="system/extras" remote="poco-native-recovery" />
+  <project name="android_system_extras" path="system/extras" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/hardware/interfaces" optional="true" />
-  <project name="android_system_hardware_interfaces" path="system/hardware/interfaces" remote="poco-native-recovery" />
+  <project name="android_system_hardware_interfaces" path="system/hardware/interfaces" remote="poco-native-recovery" groups="pdk,sysui-studio" />
   <remove-project path="system/hwservicemanager" optional="true" />
-  <project name="android_system_hwservicemanager" path="system/hwservicemanager" remote="poco-native-recovery" />
+  <project name="android_system_hwservicemanager" path="system/hwservicemanager" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/incremental_delivery" optional="true" />
-  <project name="android_system_incremental_delivery" path="system/incremental_delivery" remote="poco-native-recovery" />
+  <project name="android_system_incremental_delivery" path="system/incremental_delivery" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/keymaster" optional="true" />
-  <project name="android_system_keymaster" path="system/keymaster" remote="poco-native-recovery" />
+  <project name="android_system_keymaster" path="system/keymaster" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/libcppbor" optional="true" />
-  <project name="android_system_libcppbor" path="system/libcppbor" remote="poco-native-recovery" />
+  <project name="android_system_libcppbor" path="system/libcppbor" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/libhidl" optional="true" />
-  <project name="android_system_libhidl" path="system/libhidl" remote="poco-native-recovery" />
+  <project name="android_system_libhidl" path="system/libhidl" remote="poco-native-recovery" groups="pdk,sysui-studio" />
   <remove-project path="system/librustutils" optional="true" />
-  <project name="android_system_librustutils" path="system/librustutils" remote="poco-native-recovery" />
+  <project name="android_system_librustutils" path="system/librustutils" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/libvintf" optional="true" />
-  <project name="android_system_libvintf" path="system/libvintf" remote="poco-native-recovery" />
+  <project name="android_system_libvintf" path="system/libvintf" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/logging" optional="true" />
-  <project name="android_system_logging" path="system/logging" remote="poco-native-recovery" />
+  <project name="android_system_logging" path="system/logging" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/security" optional="true" />
-  <project name="android_system_security" path="system/security" remote="poco-native-recovery" />
+  <project name="android_system_security" path="system/security" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/sepolicy" optional="true" />
-  <project name="android_system_sepolicy" path="system/sepolicy" remote="poco-native-recovery" />
+  <project name="android_system_sepolicy" path="system/sepolicy" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/server_configurable_flags" optional="true" />
-  <project name="android_system_server_configurable_flags" path="system/server_configurable_flags" remote="poco-native-recovery" />
+  <project name="android_system_server_configurable_flags" path="system/server_configurable_flags" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/tools/aidl" optional="true" />
-  <project name="android_system_tools_aidl" path="system/tools/aidl" remote="poco-native-recovery" />
+  <project name="android_system_tools_aidl" path="system/tools/aidl" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/vold" optional="true" />
-  <project name="android_system_vold" path="system/vold" remote="poco-native-recovery" />
+  <project name="android_system_vold" path="system/vold" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="device/xiaomi/sm8250-common" optional="true" />
   <project name="device_xiaomi_sm8250-common" path="device/xiaomi/sm8250-common" remote="poco-native-recovery" revision="refs/heads/aosp-17" />
 </manifest>
