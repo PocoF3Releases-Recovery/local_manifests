@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="poco-native-recovery" fetch="https://github.com/PocoF3Releases" revision="refs/heads/cnb" />
+  <remote name="poco-native-recovery" fetch="https://github.com/PocoF3Releases-Recovery" revision="refs/heads/cnb" />
   <remove-project path="bootable/recovery" optional="true" />
   <project name="android_bootable_recovery" path="bootable/recovery" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="build/make" optional="true" />
@@ -68,4 +68,6 @@
   <project name="android_system_vold" path="system/vold" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="device/xiaomi/sm8250-common" optional="true" />
   <project name="device_xiaomi_sm8250-common" path="device/xiaomi/sm8250-common" remote="poco-native-recovery" revision="refs/heads/aosp-17" />
+  <remove-project path="device/xiaomi/alioth" optional="true" />
+  <project name="device_xiaomi_alioth" path="device/xiaomi/alioth" remote="poco-native-recovery" revision="refs/heads/aosp-17" />
 </manifest>
