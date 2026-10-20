@@ -1,0 +1,66 @@
+From d31a5e73cc5e878cb6da13afb20a41a8e4ed1362 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Tue, 13 Oct 2026 17:55:36 +0000
+Subject: [PATCH] sm8250-common: recovery: Start legacy crypto HALs on demand
+
+Add disabled QSEE listener and Keymaster services for native recovery storage unlocking. Apply device node permissions, allow access to listener readiness and firmware mounts, and reset readiness when the listener service stops so a later unlock waits for fresh registration.
+
+Co-authored-by: codex <noreply@openai.com>
+---
+ rootdir/etc/init.recovery.qcom.rc | 21 +++++++++++++++++++++
+ sepolicy/vendor/recovery.te       |  7 +++++++
+ 2 files changed, 28 insertions(+)
+ create mode 100644 sepolicy/vendor/recovery.te
+
+diff --git a/rootdir/etc/init.recovery.qcom.rc b/rootdir/etc/init.recovery.qcom.rc
+index c0fa50dc9e6e3272eec9d9e66b07eba8e7234b0a..12e821f3ad7d08c4067f0c58bd901b60c77dc7ff 100644
+--- a/rootdir/etc/init.recovery.qcom.rc
++++ b/rootdir/etc/init.recovery.qcom.rc
+@@ -28,6 +28,11 @@
+ on init
+     write /sys/class/backlight/panel0-backlight/brightness 200
+     setprop sys.usb.configfs 1
++    # Vendor is mounted later; apply the QSEE listener permissions in recovery.
++    chown system drmrpc /dev/qseecom
++    chmod 0660 /dev/qseecom
++    chown system system /dev/ion
++    chmod 0664 /dev/ion
+ 
+ on property:ro.boot.usbcontroller=*
+     setprop sys.usb.controller ${ro.boot.usbcontroller}
+@@ -36,3 +41,19 @@ on property:ro.boot.usbcontroller=*
+ on fs
+     wait /dev/block/platform/soc/${ro.boot.bootdevice}
+     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
++
++# Started on demand after native recovery mounts the vendor dependencies.
++service recovery-qseecomd /vendor/bin/qseecomd
++    disabled
++    user root
++    group root
++
++service recovery-keymaster /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
++    interface android.hardware.keymaster@4.0::IKeymasterDevice default
++    disabled
++    user system
++    group system drmrpc
++
++# A subsequent unlock must wait for newly registered QSEE listeners.
++on property:init.svc.recovery-qseecomd=stopped
++    setprop vendor.sys.listeners.registered false
+diff --git a/sepolicy/vendor/recovery.te b/sepolicy/vendor/recovery.te
+new file mode 100644
+index 0000000000000000000000000000000000000000..38eea49843063b91684852e4111166df8d74c19d
+--- /dev/null
++++ b/sepolicy/vendor/recovery.te
+@@ -0,0 +1,7 @@
++# Native recovery waits for the QSEE listeners before starting keymaster.
++recovery_only(`
++    get_prop(recovery, vendor_tee_listener_prop)
++    allow recovery vendor_file:dir mounton;
++    allow recovery mnt_vendor_file:dir { getattr search mounton };
++    allow recovery firmware_file:filesystem { mount unmount getattr relabelfrom relabelto };
++')
+-- 
+2.53.0
+

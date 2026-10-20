@@ -28,8 +28,6 @@
   <project name="android_external_selinux" path="external/selinux" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="external/sqlite" optional="true" />
   <project name="android_external_sqlite" path="external/sqlite" remote="poco-native-recovery" groups="pdk" />
-  <remove-project path="frameworks/base" optional="true" />
-  <project name="frameworks_base" path="frameworks/base" remote="poco-native-recovery" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
   <remove-project path="hardware/interfaces" optional="true" />
   <project name="android_hardware_interfaces" path="hardware/interfaces" remote="poco-native-recovery" groups="pdk,sysui-studio" />
   <remove-project path="hardware/libhardware_legacy" optional="true" />
@@ -66,8 +64,4 @@
   <project name="android_system_tools_aidl" path="system/tools/aidl" remote="poco-native-recovery" groups="pdk" />
   <remove-project path="system/vold" optional="true" />
   <project name="android_system_vold" path="system/vold" remote="poco-native-recovery" groups="pdk" />
-  <remove-project path="device/xiaomi/sm8250-common" optional="true" />
-  <project name="device_xiaomi_sm8250-common" path="device/xiaomi/sm8250-common" remote="poco-native-recovery" revision="refs/heads/aosp-17" />
-  <remove-project path="device/xiaomi/alioth" optional="true" />
-  <project name="device_xiaomi_alioth" path="device/xiaomi/alioth" remote="poco-native-recovery" revision="refs/heads/aosp-17" />
 </manifest>

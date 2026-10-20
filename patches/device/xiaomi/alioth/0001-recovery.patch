@@ -1,0 +1,32 @@
+From b316314100d6d9e1357bbecbd6724d2b14814ceb Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Mon, 12 Oct 2026 19:41:29 +0000
+Subject: [PATCH] alioth: request 120 Hz in recovery
+
+Select the supported 120 Hz panel mode and 120 fps recovery animation
+pacing. This does not change Android display settings. Runtime testing
+selected mode #1 at 120 Hz; idle recovery menus remain event-driven.
+
+Co-authored-by: codex <noreply@openai.com>
+---
+ BoardConfig.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 847efe03cbf87606c60b6cb1df254166224284b5..965158e856e590f8bddc1b6093a77a7091f63e54 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -18,6 +18,10 @@ TARGET_SCREEN_DENSITY := 440
+ # Kernel
+ TARGET_KERNEL_CONFIG := alioth_defconfig
+ 
++# Recovery
++TARGET_RECOVERY_UI_REFRESH_RATE := 120
++TARGET_RECOVERY_UI_ANIMATION_FPS := 120
++
+ # OTA assert
+ TARGET_OTA_ASSERT_DEVICE := alioth,aliothin
+ 
+-- 
+2.53.0
+

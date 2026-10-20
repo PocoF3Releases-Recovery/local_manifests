@@ -1,0 +1,61 @@
+From 5bb04254fb4c86379a9655645091308a324b16f0 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Tue, 13 Oct 2026 17:55:35 +0000
+Subject: [PATCH] frameworks: Enable Keystore2 AIDL interfaces in recovery
+
+Expose permission-controller, remote-provisioning, AAID and package-manager AIDL interfaces to recovery variants required by Keystore2. Normal Android interfaces remain unchanged.
+
+Co-authored-by: codex <noreply@openai.com>
+---
+ core/java/Android.bp          | 2 ++
+ keystore/aaid/aidl/Android.bp | 1 +
+ native/android/Android.bp     | 1 +
+ 3 files changed, 4 insertions(+)
+
+diff --git a/core/java/Android.bp b/core/java/Android.bp
+index 18a229b31bfec14eec2b0e8d02b8a44a5d3a2f8f..dfc9bcdf4ccc4ef5362556b6b4cc381dfa912175 100644
+--- a/core/java/Android.bp
++++ b/core/java/Android.bp
+@@ -746,6 +746,7 @@ cc_library {
+ // Build Rust bindings for PermissionController. Needed by keystore2.
+ aidl_interface {
+     name: "android.os.permissions_aidl",
++    recovery_available: true,
+     unstable: true,
+     local_include_dir: ".",
+     srcs: [
+@@ -765,6 +766,7 @@ aidl_interface {
+ // Build Rust bindings for remote provisioning. Needed by keystore2.
+ aidl_interface {
+     name: "android.security.rkp_aidl",
++    recovery_available: true,
+     unstable: true,
+     srcs: [
+         "android/security/rkp/*.aidl",
+diff --git a/keystore/aaid/aidl/Android.bp b/keystore/aaid/aidl/Android.bp
+index 97acfb4ea4c3430a88b979ea88b198800b55e5db..bc518f0288d52d6ab711b462a37b5b89bab47e4c 100644
+--- a/keystore/aaid/aidl/Android.bp
++++ b/keystore/aaid/aidl/Android.bp
+@@ -18,6 +18,7 @@ package {
+ 
+ aidl_interface {
+     name: "android.security.aaid_aidl",
++    recovery_available: true,
+     srcs: ["android/security/keystore/*.aidl"],
+     unstable: true,
+     backend: {
+diff --git a/native/android/Android.bp b/native/android/Android.bp
+index 6c172b98e7f80ee21fa53fc4b440adec4657bb50..8c21f7a52b4e0fd616a107c6ce51176d8122184f 100644
+--- a/native/android/Android.bp
++++ b/native/android/Android.bp
+@@ -241,6 +241,7 @@ filegroup {
+ 
+ aidl_interface {
+     name: "packagemanager_aidl",
++    recovery_available: true,
+     unstable: true,
+     local_include_dir: "aidl",
+     host_supported: true,
+-- 
+2.53.0
+
