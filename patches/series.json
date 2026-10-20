@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "projects": [
+    {
+      "path": "frameworks/base",
+      "repository": "https://github.com/PocoF3Releases/frameworks_base",
+      "branch": "cnb",
+      "patches": [
+        {
+          "file": "patches/frameworks/base/0001-recovery.patch",
+          "sha256": "e45007d58795514a55e8aa142a63a30a26cd2e0a36505a90ff12a098ddb5e23b"
+        }
+      ]
+    },
+    {
+      "path": "device/xiaomi/alioth",
+      "repository": "https://github.com/PocoF3Releases/device_xiaomi_alioth",
+      "branch": "aosp-17",
+      "patches": [
+        {
+          "file": "patches/device/xiaomi/alioth/0001-recovery.patch",
+          "sha256": "1d0c42b1e9df6262cd92e239dc13474f3fdefee7ecde05c07d99c173d0d8f903"
+        }
+      ]
+    },
+    {
+      "path": "device/xiaomi/sm8250-common",
+      "repository": "https://github.com/PocoF3Releases/device_xiaomi_sm8250-common",
+      "branch": "aosp-17",
+      "patches": [
+        {
+          "file": "patches/device/xiaomi/sm8250-common/0001-recovery.patch",
+          "sha256": "d042589fb0037003e7c92dc9df2dd6c53f0091fc8842aab750f1337dcbfda147"
+        },
+        {
+          "file": "patches/device/xiaomi/sm8250-common/0002-recovery.patch",
+          "sha256": "7dfbcca83cddbe45b981aa6be2b57e268708a2054cca9ce14929e1ad489b4d10"
+        }
+      ]
+    }
+  ]
+}

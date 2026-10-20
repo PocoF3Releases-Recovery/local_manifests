@@ -1,0 +1,31 @@
+From 7b3d66b9a426e35c4a1d039ba84f64d245c6e895 Mon Sep 17 00:00:00 2001
+From: johnmart19 <johnivan19999@gmail.com>
+Date: Wed, 14 Oct 2026 03:52:04 +0000
+Subject: [PATCH] sm8250-common: Start Gatekeeper only for recovery credential
+ checks
+
+Declare the disabled QTI Gatekeeper recovery service for on-demand verification of existing screen-lock credentials. Keep normal Android service behavior unchanged.
+
+Co-authored-by: codex <noreply@openai.com>
+---
+ rootdir/etc/init.recovery.qcom.rc | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/rootdir/etc/init.recovery.qcom.rc b/rootdir/etc/init.recovery.qcom.rc
+index 12e821f3ad7d08c4067f0c58bd901b60c77dc7ff..d7ec8bc51c113fa5b981ae69c4f628536eba9d38 100644
+--- a/rootdir/etc/init.recovery.qcom.rc
++++ b/rootdir/etc/init.recovery.qcom.rc
+@@ -57,3 +57,10 @@ service recovery-keymaster /vendor/bin/hw/android.hardware.keymaster@4.0-service
+ # A subsequent unlock must wait for newly registered QSEE listeners.
+ on property:init.svc.recovery-qseecomd=stopped
+     setprop vendor.sys.listeners.registered false
++
++# Credential verification only; never enroll or delete Gatekeeper users.
++service recovery-gatekeeper /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
++    interface android.hardware.gatekeeper@1.0::IGatekeeper default
++    disabled
++    user system
++    group system
+-- 
+2.53.0
+
