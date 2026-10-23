@@ -6,7 +6,10 @@ only their recovery additions as authored mail patches. Recovery-only dependency
 repositories remain selected by `poco-native-recovery.xml`.
 
 Place this repository at `.repo/local_manifests`, retaining your ROM device and
-framework overrides alongside it. After each sync, apply the recovery patches:
+framework overrides alongside it. If that directory already contains loose XML
+files, copy this repository's tracked files into it while preserving the existing
+ROM overrides; do not clone over or delete the directory. The apply script and
+`patches/` must be present together. After each sync, apply the recovery patches:
 
 ```sh
 repo sync -j50
