@@ -5,7 +5,7 @@ Subject: [PATCH] frameworks: Enable Keystore2 AIDL interfaces in recovery
 
 Expose permission-controller, remote-provisioning, AAID and package-manager AIDL interfaces to recovery variants required by Keystore2. Normal Android interfaces remain unchanged.
 
-Co-authored-by: codex <noreply@openai.com>
+Assisted-by: LLM - GPT-6.1 Sol Max
 ---
  core/java/Android.bp          | 2 ++
  keystore/aaid/aidl/Android.bp | 1 +

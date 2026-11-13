@@ -5,7 +5,7 @@ Subject: [PATCH] sm8250-common: recovery: Start legacy crypto HALs on demand
 
 Add disabled QSEE listener and Keymaster services for native recovery storage unlocking. Apply device node permissions, allow access to listener readiness and firmware mounts, and reset readiness when the listener service stops so a later unlock waits for fresh registration.
 
-Co-authored-by: codex <noreply@openai.com>
+Assisted-by: LLM - GPT-6.1 Sol Max
 ---
  rootdir/etc/init.recovery.qcom.rc | 21 +++++++++++++++++++++
  sepolicy/vendor/recovery.te       |  7 +++++++

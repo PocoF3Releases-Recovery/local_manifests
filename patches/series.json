@@ -8,7 +8,7 @@
       "patches": [
         {
           "file": "patches/frameworks/base/0001-recovery.patch",
-          "sha256": "e45007d58795514a55e8aa142a63a30a26cd2e0a36505a90ff12a098ddb5e23b"
+          "sha256": "33b3a664cffb08bcc0729e10f508a868e03b372c8b1d940aac20be9ec88dffe0"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "patches": [
         {
           "file": "patches/device/xiaomi/alioth/0001-recovery.patch",
-          "sha256": "1d0c42b1e9df6262cd92e239dc13474f3fdefee7ecde05c07d99c173d0d8f903"
+          "sha256": "733eac675265336fc404e78fb299d12df97c55bb84188b06984ae551ca3ada65"
         }
       ]
     },
@@ -30,11 +30,11 @@
       "patches": [
         {
           "file": "patches/device/xiaomi/sm8250-common/0001-recovery.patch",
-          "sha256": "d042589fb0037003e7c92dc9df2dd6c53f0091fc8842aab750f1337dcbfda147"
+          "sha256": "0674fe7e1542b790e2bdc002da37dadfa7fd39b342db63b9d3b4c2368a3cda8b"
         },
         {
           "file": "patches/device/xiaomi/sm8250-common/0002-recovery.patch",
-          "sha256": "7dfbcca83cddbe45b981aa6be2b57e268708a2054cca9ce14929e1ad489b4d10"
+          "sha256": "3f470d9339967040426fa53fcda2cef4a105a337bb670f7fe3ac99f21e79dea9"
         }
       ]
     }

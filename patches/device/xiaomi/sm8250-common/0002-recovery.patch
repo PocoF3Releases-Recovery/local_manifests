@@ -6,7 +6,7 @@ Subject: [PATCH] sm8250-common: Start Gatekeeper only for recovery credential
 
 Declare the disabled QTI Gatekeeper recovery service for on-demand verification of existing screen-lock credentials. Keep normal Android service behavior unchanged.
 
-Co-authored-by: codex <noreply@openai.com>
+Assisted-by: LLM - GPT-6.1 Sol Max
 ---
  rootdir/etc/init.recovery.qcom.rc | 7 +++++++
  1 file changed, 7 insertions(+)

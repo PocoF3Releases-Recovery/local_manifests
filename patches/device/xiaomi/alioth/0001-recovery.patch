@@ -7,7 +7,7 @@ Select the supported 120 Hz panel mode and 120 fps recovery animation
 pacing. This does not change Android display settings. Runtime testing
 selected mode #1 at 120 Hz; idle recovery menus remain event-driven.
 
-Co-authored-by: codex <noreply@openai.com>
+Assisted-by: LLM - GPT-6.1 Sol Max
 ---
  BoardConfig.mk | 4 ++++
  1 file changed, 4 insertions(+)
